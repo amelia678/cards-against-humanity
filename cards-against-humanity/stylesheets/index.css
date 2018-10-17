@@ -12,7 +12,20 @@ body {
     
 }
 
-.text {
-    text
+h1 {
+    color: white;
 }
 
+h2 {
+    color: white;
+}
+
+div {
+    color: lemonchiffon;
+}
+
+.card-display {
+    margin: 5px 5px;
+    font-size: 24px;
+
+}
