@@ -63,6 +63,7 @@ function getCardAnswer () {
         .then(r => r.json())
         // .then(convertToJson)
     //    .then(data => data)
+       .then(cacheAnswer)
        .then(extractAnswer)
        .then(drawCard)
 }
@@ -70,6 +71,14 @@ function getCardAnswer () {
 // function convertToJson(r) {
 //     return r.json();
 // }
+
+function cacheAnswer (cardObj) {
+    if (cardObj.answer) {
+        console.log('Caching answer to localStorage');
+        localStorage.setItem('answer', cardObj.answer);
+    }
+    return cardObj;
+}
 
 function extractAnswer(cardObj) {
     // console.log(cardObj)
