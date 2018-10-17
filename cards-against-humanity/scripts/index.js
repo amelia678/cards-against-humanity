@@ -10,6 +10,7 @@ function getCardQuestion () {
         .then(r => r.json())
         // .then(convertToJson)
     //    .then(data => data)
+       .then(cacheCard)
        .then(extractQuestion)
        .then(drawCard)
 }
@@ -18,10 +19,18 @@ function getCardQuestion () {
 //     return r.json();
 // }
 
+function cacheCard (cardObj) {
+    if (cardObj.question) {
+        console.log('Caching question to localStorage');
+        localStorage.setItem('question', cardObj.question);
+    }
+    return cardObj;
+}
+
 function extractQuestion(cardObj) {
     // console.log(cardObj)
     return cardObj.question;
-    console.log(cardObj.answer)
+    
 }
 
 // function that draws card to DOM
