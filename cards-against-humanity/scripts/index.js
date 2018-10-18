@@ -6,7 +6,7 @@ const outputElement = document.querySelector('[data-output]');
 
 // function that fetches card
 function getCardQuestion () {
-    fetch('http://my-little-cors-proxy.herokuapp.comvalsdzhgvx/https://cardsagainsthumanity-api.herokuapp.com/pick')
+    fetch('http://my-little-cors-proxy.herokuapp.com/https://cardsagainsthumanity-api.herokuapp.com/pick')
         .then(r => r.json())
         // .then(convertToJson)
     //    .then(data => data)
@@ -71,6 +71,7 @@ function getCardAnswer () {
     //    .then(data => data)
        .then(cacheAnswer)
        .then(extractAnswer)
+       .catch(showCachedAnswer)
        .then(drawCard)
 }
 
@@ -90,6 +91,11 @@ function extractAnswer(cardObj) {
     // console.log(cardObj)
     // return cardObj.question;
     return cardObj.answer
+}
+
+function showCachedAnswer(err) {
+    console.log(err);
+    return localStorage.getItem('answer')
 }
 
 // function that draws card to DOM
